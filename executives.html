@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | PersonnelMS</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-users-cog"></i> PersonnelMS</h3>
+            <button class="close-sidebar" id="closeSidebar">&times;</button>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li>
+                <a href="executive.html" class="active">
+                    <i class="fas fa-user"></i> My Profile
+                </a>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <p>Logged in as Executive</p>
+        </div>
+    </div>
+
+    
+
+    <!-- Main Content -->
+    <header>
+        <div class="container header-content">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">
+                <i class="fas fa-user"></i>
+                <span>Executive Portal</span>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#" id="logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="card animated">
+                <div class="profile-header">
+                    <div class="profile-image">
+                        <img src="images/IMG_6848.WEBP" alt="Profile Image">
+                        
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="executiveName">Michael Johnson</h2>
+                        <p class="text-muted" id="executivePosition">Senior Executive</p>
+                        <p id="executiveWardLga">North District, Central City</p>
+                    </div>
+                </div>
+
+                <div class="profile-details mt-4">
+                    <h3><i class="fas fa-info-circle"></i> Personal Information</h3>
+                    <div class="form-row mt-3">
+                        <div class="form-group col-md-6">
+                            <label id="leb">Full Name</label>
+                            <p class="form-control-static" id="executiveFullName">Michael Johnson</p>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label id="leb">Position</label>
+                            <p class="form-control-static" id="executivePositionDetail">Senior Executive</p>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label id="leb">Email</label>
+                            <p class="form-control-static" id="executiveEmail">m.johnson@org.com</p>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label id="leb">Phone</label>
+                            <p class="form-control-static" id="executivePhone">08012345678</p>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label id="leb">Ward</label>
+                            <p class="form-control-static" id="executiveWard">North District</p>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label id="leb">Local Government</label>
+                            <p class="form-control-static" id="executiveLga">Central City</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/executive.js"></script>
+</body>
+</html>

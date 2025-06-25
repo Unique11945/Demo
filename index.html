@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | PersonnelMS</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Login Page Specific Styles */
+        :root {
+            --login-primary: #4361ee;
+            --login-secondary: #3a0ca3;
+            --login-accent: #f72585;
+        }
+        
+        .login-container {
+            display: flex;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(67,97,238,0.1) 0%, rgba(67,97,238,0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .login-design {
+            flex: 1;
+            background: linear-gradient(135deg, var(--login-primary), var(--login-secondary));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-design::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: url(images/IMG_6848.WEBP) no-repeat;
+            background-size: 100% 100%;
+            opacity: 0.5;
+        }
+        
+        .login-logo {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+        }
+        
+        .login-logo i {
+            margin-right: 15px;
+            font-size: 3rem;
+            color: var(--login-accent);
+        }
+        
+        .login-illustration {
+            width: 80%;
+            max-width: 400px;
+            margin: 2rem 0;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .login-quote {
+            font-style: italic;
+            text-align: center;
+            max-width: 400px;
+            margin-top: 2rem;
+            opacity: 0.9;
+            z-index: 1;
+        }
+        
+        .login-card {
+            width: 100%;
+            max-width: 450px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        
+        .login-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .login-header h2 {
+            color: var(--login-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .login-header p {
+            color: #666;
+        }
+        
+        .login-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .login-footer a {
+            color: var(--login-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+        
+        .form-control:focus {
+            border-color: var(--login-primary);
+            box-shadow: 0 0 0 3px rgba(67,97,238,0.2);
+            background-color: white;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 2.5rem;
+            color: #999;
+        }
+        
+        .btn-login {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to right, var(--login-primary), var(--login-secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67,97,238,0.3);
+        }
+        
+        .btn-login::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn-login:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 1;
+            }
+            20% {
+                transform: scale(25, 25);
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(40, 40);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .login-container {
+                flex-direction: column;
+            }
+            
+            .login-design {
+                padding: 2rem 1rem;
+            }
+            
+            .login-illustration {
+                width: 60%;
+                margin: 1rem 0;
+            }
+            
+            .login-card {
+                padding: 2rem;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Design Side -->
+        <div class="login-design">
+            <div class="login-logo animated">
+                <i class="fas fa-users-cog"></i>
+                <span></span>
+            </div>
+            
+            <img src="https://cdn-icons-png.flaticon.com/512/3209/3209268.png" alt="Team Illustration" class="login-illustration animated" style="animation-delay: 0.2s;">
+            
+            <p class="login-quote animated" style="animation-delay: 0.4s;">
+                
+            </p>
+            
+            <div class="login-bubbles">
+                <div class="bubble" style="--size: 3rem; --distance: 6rem; --duration: 15s; --delay: 0s;"></div>
+                <div class="bubble" style="--size: 5rem; --distance: 8rem; --duration: 20s; --delay: 2s;"></div>
+                <div class="bubble" style="--size: 2rem; --distance: 5rem; --duration: 12s; --delay: 1s;"></div>
+            </div>
+        </div>
+        
+        <!-- Form Side -->
+        <div class="login-card animated" style="animation-delay: 0.1s;">
+            <div class="login-header">
+                <h2>Welcome Back!</h2>
+                <p>Please login to access your account</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <i class="fas fa-user-tag input-icon"></i>
+                    <select id="role" class="form-control" required>
+                        <option value="">Select your role</option>
+                        <option value="admin">Admin</option>
+                        <option value="moderator">Moderator</option>
+                        <option value="executive">Executive</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn-login">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </div>
+            </form>
+            
+            <div class="login-footer">
+                <p>Don't have an account? <a href="#">Contact administrator</a></p>
+                <p><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/auth.js"></script>
+    <script>
+        // Add floating bubbles animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const bubblesContainer = document.createElement('div');
+            bubblesContainer.className = 'login-bubbles';
+            document.querySelector('.login-design').appendChild(bubblesContainer);
+            
+            // Create bubbles
+            for (let i = 0; i < 5; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.style.setProperty('--size', `${Math.random() * 4 + 2}rem`);
+                bubble.style.setProperty('--distance', `${Math.random() * 6 + 4}rem`);
+                bubble.style.setProperty('--duration', `${Math.random() * 10 + 10}s`);
+                bubble.style.setProperty('--delay', `${Math.random() * 5}s`);
+                bubblesContainer.appendChild(bubble);
+            }
+            
+            // Add styles for bubbles
+            const style = document.createElement('style');
+            style.textContent = `
+                .login-bubbles {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    z-index: 0;
+                }
+                
+                .bubble {
+                    position: absolute;
+                    bottom: -100px;
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 50%;
+                    width: var(--size);
+                    height: var(--size);
+                    animation: float-up var(--duration) linear infinite;
+                    animation-delay: var(--delay);
+                }
+                
+                @keyframes float-up {
+                    0% {
+                        transform: translateY(0) translateX(0);
+                        opacity: 0;
+                    }
+                    10% {
+                        opacity: 0.3;
+                    }
+                    100% {
+                        transform: translateY(calc(-1 * var(--distance))) translateX(calc(var(--distance) / 2));
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>

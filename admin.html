@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | PDP Database</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Add this right after the <body> tag -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h3><i class="fas fa-users-cog"></i> PDP Database</h3>
+        <button class="close-sidebar" id="closeSidebar">&times;</button>
+    </div>
+
+    <!-- Sidebar Overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+<!-- Add to header -->
+<button class="menu-toggle" id="menuToggle">
+    <i class="fas fa-bars"></i>
+</button>
+    
+    <ul class="sidebar-menu">
+        <!-- Admin Links (shown only to admin) -->
+        <li class="admin-only">
+            <a href="admin.html" class="active">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+        </li>
+        <li class="admin-only">
+            <a href="admin-moderators.html">
+                <i class="fas fa-users"></i> Moderators
+            </a>
+        </li>
+        
+        <!-- Moderator Links (shown to admin and moderators) -->
+        <li class="moderator-only">
+            <a href="moderator.html">
+                <i class="fas fa-user-tie"></i> My Executives
+            </a>
+        </li>
+        
+        <!-- Executive Links (shown to all) -->
+        <li>
+            <a href="profile.html">
+                <i class="fas fa-user"></i> My Profile
+            </a>
+        </li>
+        <li>
+            <a href="settings.html">
+                <i class="fas fa-cog"></i> Settings
+            </a>
+        </li>
+    </ul>
+    
+    <div class="sidebar-footer">
+        <p>v2.0 &copy; 2023</p>
+    </div>
+</div>
+
+
+    <header>
+        <div class="container header-content">
+            <!-- Add this to the header (inside <div class="header-content">) -->
+<button class="menu-toggle" id="menuToggle">
+    <i class="fas fa-bars"></i>
+</button>
+            <div class="logo">
+                <i class="fas fa-users-cog"></i>
+                <span>PDP Database</span>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#" id="logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="dashboard-cards">
+                <div class="dashboard-card animated">
+                    <i class="fas fa-users"></i>
+                    <h3 id="moderatorsCount">37</h3>
+                    <p>Total Moderators</p>
+                </div>
+                <div class="dashboard-card animated" style="animation-delay: 0.1s;">
+                    <i class="fas fa-user-tie"></i>
+                    <h3 id="executivesCount">124</h3>
+                    <p>Total Executives</p>
+                </div>
+                <div class="dashboard-card animated" style="animation-delay: 0.2s;">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3 id="wardsCount">300</h3>
+                    <p>Active Wards</p>
+                </div>
+            </div>
+
+            
+            </div>
+        </div>
+
+        <!-- Add this inside the admin.html file, within the <main> section -->
+<section class="card animated">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h2><i class="fas fa-users-cog"></i> Manage Moderators</h2>
+      <button id="addModeratorBtn" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Add Moderator
+      </button>
+    </div>
+  
+    <!-- Moderator Form (Initially Hidden) -->
+    <div class="moderator-form card mb-4" id="moderatorForm" style="display:none;">
+      <h3 class="mb-3"><i class="fas fa-user-edit"></i> Moderator Details</h3>
+      <form id="moderatorFormElement">
+        <input type="hidden" id="moderatorId">
+        
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="moderatorName">Full Name*</label>
+            <input type="text" id="moderatorName" class="form-control" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="moderatorPosition">Position*</label>
+            <input type="text" id="moderatorPosition" class="form-control" value="Moderator" readonly>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="moderatorEmail">Email*</label>
+            <input type="email" id="moderatorEmail" class="form-control" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="moderatorPhone">Phone*</label>
+            <input type="tel" id="moderatorPhone" class="form-control" required>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="moderatorWard">Ward*</label>
+            <input type="text" id="moderatorWard" class="form-control" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="moderatorLGA">Local Government*</label>
+            <input type="text" id="moderatorLGA" class="form-control" required>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="moderatorUsername">Username*</label>
+            <input type="text" id="moderatorUsername" class="form-control" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="moderatorPassword">Password*</label>
+            <input type="password" id="moderatorPassword" class="form-control" required>
+          </div>
+        </div>
+  
+        <div class="form-group mt-3">
+          <button type="submit" class="btn btn-primary mr-2">
+            <i class="fas fa-save"></i> Save
+          </button>
+          <button type="button" id="cancelModeratorBtn" class="btn btn-secondary">
+            <i class="fas fa-times"></i> Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Moderators Table -->
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Ward</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>LGA</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="moderatorsTableBody">
+          <!-- Moderators will be dynamically inserted here -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+    </main>
+    <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+    // Verify admin role
+    if (currentUser.role !== 'admin') {
+        window.location.href = 'login.html';
+        return;
+    }
+    
+    // Load moderators (in a real app, this would be from a database)
+    loadModerators();
+    
+    // Form toggle
+    const addModeratorBtn = document.getElementById('addModeratorBtn');
+    const moderatorForm = document.getElementById('moderatorForm');
+    const cancelModeratorBtn = document.getElementById('cancelModeratorBtn');
+    
+    addModeratorBtn.addEventListener('click', function() {
+        moderatorForm.style.display = 'block';
+        document.getElementById('moderatorFormElement').reset();
+        document.getElementById('moderatorId').value = '';
+    });
+    
+    cancelModeratorBtn.addEventListener('click', function() {
+        moderatorForm.style.display = 'none';
+    });
+    
+    // Form submission
+    const moderatorFormElement = document.getElementById('moderatorFormElement');
+    moderatorFormElement.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const moderatorId = document.getElementById('moderatorId').value;
+        const name = document.getElementById('moderatorName').value;
+        const email = document.getElementById('moderatorEmail').value;
+        const phone = document.getElementById('moderatorPhone').value;
+        const ward = document.getElementById('moderatorWard').value;
+        const lga = document.getElementById('moderatorLGA').value;
+        const username = document.getElementById('moderatorUsername').value;
+        const password = document.getElementById('moderatorPassword').value;
+        
+        // In a real app, this would be an API call
+        if (moderatorId) {
+            // Update existing moderator
+            const index = users.findIndex(u => u.id == moderatorId);
+            if (index !== -1) {
+                users[index] = {
+                    ...users[index],
+                    name,
+                    email,
+                    phone,
+                    ward,
+                    lga,
+                    username,
+                    password
+                };
+            }
+        } else {
+            // Add new moderator
+            const newId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
+            users.push({
+                id: newId,
+                username,
+                password,
+                role: 'moderator',
+                name,
+                email,
+                phone,
+                ward,
+                lga
+            });
+        }
+        
+        moderatorForm.style.display = 'none';
+        loadModerators();
+    });
+});
+
+function loadModerators() {
+    const moderatorsTableBody = document.getElementById('moderatorsTableBody');
+    moderatorsTableBody.innerHTML = '';
+    
+    const moderators = users.filter(u => u.role === 'moderator');
+    
+    moderators.forEach(moderator => {
+        const row = document.createElement('tr');
+        
+        row.innerHTML = `
+            <td>${moderator.name}</td>
+            <td>Moderator</td>
+            <td>${moderator.ward}</td>
+            <td>${moderator.email}</td>
+            <td>${moderator.phone}</td>
+            <td>${moderator.lga}</td>
+            <td>
+                <button class="action-btn edit-btn" data-id="${moderator.id}">Edit</button>
+                <button class="action-btn delete-btn" data-id="${moderator.id}">Delete</button>
+            </td>
+        `;
+        
+        moderatorsTableBody.appendChild(row);
+    });
+    
+    // Add event listeners to edit buttons
+    document.querySelectorAll('.edit-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const moderatorId = this.getAttribute('data-id');
+            editModerator(moderatorId);
+        });
+    });
+    
+    // Add event listeners to delete buttons
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const moderatorId = this.getAttribute('data-id');
+            deleteModerator(moderatorId);
+        });
+    });
+}
+
+function editModerator(id) {
+    const moderator = users.find(u => u.id == id);
+    if (moderator) {
+        document.getElementById('moderatorId').value = moderator.id;
+        document.getElementById('moderatorName').value = moderator.name;
+        document.getElementById('moderatorEmail').value = moderator.email;
+        document.getElementById('moderatorPhone').value = moderator.phone;
+        document.getElementById('moderatorWard').value = moderator.ward;
+        document.getElementById('moderatorLGA').value = moderator.lga;
+        document.getElementById('moderatorUsername').value = moderator.username;
+        document.getElementById('moderatorPassword').value = moderator.password;
+        
+        document.getElementById('moderatorForm').style.display = 'block';
+    }
+}
+
+function deleteModerator(id) {
+    if (confirm('Are you sure you want to delete this moderator?')) {
+        const index = users.findIndex(u => u.id == id);
+        if (index !== -1) {
+            users.splice(index, 1);
+            loadModerators();
+        }
+    }
+}
+    </script>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 PDP Database. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/admin.js"></script>
+    <script src="scripts/.js"></script>
+</body>
+</html>
